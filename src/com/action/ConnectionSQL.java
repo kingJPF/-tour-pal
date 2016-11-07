@@ -23,7 +23,7 @@ public class ConnectionSQL {
             }  
             //return false;  
         }catch(Exception e){  
-            e.printStackTrace();  
+            e.printStackTrace();
         }finally{  
             try{  
                 rs.close();  
@@ -52,7 +52,8 @@ public class ConnectionSQL {
             ps.setString(4,user.getUserage());
             int mun=ps.executeUpdate();  
         }catch(Exception e){  
-        e.printStackTrace();  
+        e.printStackTrace(); 
+        return false;
         }finally{  
             try{  
                   
