@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include  file="sessionCheck.jsp"%>
+<%@page import="com.action.*"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="com.opensymphony.xwork2.*"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
@@ -91,14 +97,24 @@
 //-->
 </script>
 <BODY bgcolor="#FFEC8B">
-<center>
-<table width="300" height="100" id="mainTb">
-    <tr><th rowspan="4"><div id="cnt">&nbsp;</div></td>
-    <td width="15"><span class="ctrl">&nbsp;1&nbsp;</span></td></tr>
-    <tr><td><span class="ctrl">&nbsp;2&nbsp;</span></td></tr>
-    <tr><td><span class="ctrl">&nbsp;3&nbsp;</span></td></tr>
-    <tr><td><span class="ctrl">&nbsp;4&nbsp;</span></td></tr>
-</table> 
+
+
+         <%HttpSession Session = request.getSession();
+         User ses = (User)Session.getAttribute("user");
+         String s = ses.getUsername(); //获取session username %>
+<p>欢迎：<%=s %></p>
+
+
+	<center>
+	<table width="300" height="100" id="mainTb">
+	    <tr><th rowspan="4"><div id="cnt">&nbsp;</div></td>
+	    <td width="15"><span class="ctrl">&nbsp;1&nbsp;</span></td></tr>
+	    <tr><td><span class="ctrl">&nbsp;2&nbsp;</span></td></tr>
+	    <tr><td><span class="ctrl">&nbsp;3&nbsp;</span></td></tr>
+	    <tr><td><span class="ctrl">&nbsp;4&nbsp;</span></td></tr>
+	</table> 
+
+
 </center>
 </BODY>
 </HTML>
