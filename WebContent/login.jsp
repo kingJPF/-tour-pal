@@ -13,7 +13,7 @@
   
         <form action="login" method ="post">  
         用户名: <input name="username" type="text"/><br/>  
-        密       码: <input name="password" type="password"/><br/>
+        密&nbsp码: <input name="password" type="password"/><br/>
         <s:property value = "message"/>  <br/>
         <input name="submit" type ="submit" value="提交"/>  
     </form><br/><br/><br/>  

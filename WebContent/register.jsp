@@ -12,9 +12,9 @@
         如果您已有账号，单击此处<a href="login.jsp">登陆</a>  
   
         <form action="register" method ="post">  
-        &nbsp;用户名*: <input name="username" type="text"/><br/>  
+        	用户名&nbsp;*: <input name="username" type="text"/><br/>  
      <tr>
-     <td align="right">性&nbsp;&nbsp;别*：</td>
+     <td align="right">性&nbsp;别*：</td>
 		<select name="usersex" type="text" > <OPTION value=男 selected>男</OPTION> <OPTION value=女>女</OPTION> 
 		</select>
    	<td class="info"> 请选择你的性别</td>
