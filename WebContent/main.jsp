@@ -96,13 +96,23 @@
     function $(id){ return document.getElementById(id);}
 //-->
 </script>
+
+<script type="text/javascript">
+function team(e)
+{
+	var username = document.getElementById("username");
+	window.location.href = "TeamInfo?username="+e.innerHTML;
+}
+
+</script>
+
 <BODY bgcolor="#FFEC8B">
 
 
          <%HttpSession Session = request.getSession();
          User ses = (User)Session.getAttribute("user");
          String s = ses.getUsername(); //获取session username %>
-<p>欢迎：<%=s %></p>
+<p align="right">欢迎：<%=s %></p>
 
 
 	<center>
@@ -112,8 +122,34 @@
 	    <tr><td><span class="ctrl">&nbsp;2&nbsp;</span></td></tr>
 	    <tr><td><span class="ctrl">&nbsp;3&nbsp;</span></td></tr>
 	    <tr><td><span class="ctrl">&nbsp;4&nbsp;</span></td></tr>
-	</table> 
-
+	</table>
+	<table id="table1" border="1" cellpadding="0" cellspacing="10"  style="border:none">
+<tr>
+    <td width="230" border="1" valign="top" >
+    <font size="20">约!约!约!</font>
+    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
+    <font size="5"><a href="choice.jsp">·匹配队友</a></font>
+    </td>
+    <td valign="top"> 
+    <font size="20">推荐路径</font>
+    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
+    <font size="5"><a href="Baidumap.jsp">·待完成</a></font>
+    </td>
+</tr>
+<tr>
+    <td valign="top">
+    <font size="20">组建队伍</font>
+    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
+    <font size="5"><a href="TeamInfo">info</a></font>
+    </td valign="top">
+    <td valign="top">
+    <font size="20">广告位招租：</font>
+    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
+    <font size="5"><a href="http://www.w3school.com.cn/">·秋林商场大促销</a></font>
+    </td>
+</tr>
+	</table>  
+ 
 
 </center>
 </BODY>

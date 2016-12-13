@@ -1,14 +1,65 @@
 package com.action;
 
+import java.sql.Date;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class User extends ActionSupport {
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
 	private String username;
 	private String password;
 	private String password1;
 	private String usersex;
 	private String userage;
+	private int flag;
+	private String start;
+	private String end;
+	private String start_date;
+	private String datemonth;
+	private String dateday;
+	private String info;
 	
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	public String getStart_date() {
+		return start_date;
+	}
+	public String getDatemonth() {
+		return datemonth;
+	}
+	public void setDatemonth(String datemonth) {
+		this.datemonth = datemonth;
+	}
+	public String getDateday() {
+		return dateday;
+	}
+	public void setDateday(String dateday) {
+		this.dateday = dateday;
+	}
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
 	public String getPassword1() {
 		return password1;
 	}
