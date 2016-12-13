@@ -286,7 +286,7 @@ public class ConnectionSQL {
     	Connection conn=null;  
         PreparedStatement ps=null;
         
-        
+        String temp = "",name = "";
         try{  
        	 	System.out.println("connecte Sql");
             Class.forName("com.mysql.jdbc.Driver");  
@@ -296,38 +296,42 @@ public class ConnectionSQL {
             ps=conn.prepareStatement(sql);
             ps.setString(1,Leadname); 
             ResultSet rsl = ps.executeQuery();
-            String temp = "w";
+            
             while(rsl.next()) {
             	temp = rsl.getString("info");
-            	     
+            	name = rsl.getString("userid");
             }
-            System.out.println(temp+"123");
-            ps.close();
-            if (temp != ""){
-        		sql = "UPDATE user SET info = ? WHERE userid = ?";
-        		ps=conn.prepareStatement(sql);
-                ps.setString(1,temp);
-                ps.setString(2,user.getUsername());
-                ps.executeUpdate();
-                ps.close();
-                user.setInfo(temp);
+            
+            
+            if (temp == null){
+            	PreparedStatement ps1=null;
+            	sql = "UPDATE user SET info = ? WHERE userid = ?";
+        		ps1=conn.prepareStatement(sql);
+                ps1.setString(1,name);
+                ps1.setString(2,user.getUsername());
+                ps1.executeUpdate();
+                
+                
+                PreparedStatement ps2=null;
+                sql = "UPDATE user SET info = ? WHERE userid = ?";
+        		ps2=conn.prepareStatement(sql);
+                ps2.setString(1,name);
+                ps2.setString(2,Leadname);
+                ps2.executeUpdate();
+                System.out.println(temp+"123");
+        		
+                user.setInfo(user.getUsername());
         		return true;
         	}else {
+        		PreparedStatement ps3=null;
         		sql = "UPDATE user SET info = ? WHERE userid = ?";
-        		ps=conn.prepareStatement(sql);
-                ps.setString(1,user.getUsername());
-                ps.setString(2,user.getUsername());
-                ps.executeUpdate();
-                ps.close();
+        		ps3=conn.prepareStatement(sql);
+                ps3.setString(1,name);
+                ps3.setString(2,user.getUsername());
+                ps3.executeUpdate();
+                ps3.close();
                 
-                sql = "UPDATE user SET info = ? WHERE userid = ?";
-        		ps=conn.prepareStatement(sql);
-                ps.setString(1,user.getUsername());
-                ps.setString(2,Leadname);
-                ps.executeUpdate();
-                
-                
-        		user.setInfo(user.getUsername());
+        		user.setInfo(name);
         		return true;
         	}
             
