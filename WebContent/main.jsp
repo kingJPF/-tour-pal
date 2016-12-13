@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include  file="sessionCheck.jsp"%>
 <%@page import="com.action.*"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 <%@page import="javax.servlet.http.HttpSession"%>
@@ -10,7 +9,12 @@
 <HTML>
 <HEAD>
 <TITLE></TITLE>
+
+
+
+
 </HEAD>
+
 <style>
 #cnt{width:100%;height:80%;}
 .ctrl{text-align:center;border:1px solid gray;font-size:12px;cursor:pointer;}
@@ -97,58 +101,116 @@
 //-->
 </script>
 
-<script type="text/javascript">
-function team(e)
+
+<style>
+body 
 {
-	var username = document.getElementById("username");
-	window.location.href = "TeamInfo?username="+e.innerHTML;
+    background-image:url(pic/6.jpg);
+    background-color:#b0c4de;
 }
-
-</script>
-
-<BODY bgcolor="#FFEC8B">
+</style>
 
 
-         <%HttpSession Session = request.getSession();
+<BODY >
+
+
+         <%
+   if(session.getAttribute("user") != null) // 已经设置过的属性，所有不为空
+   {
+  %> <%HttpSession Session = request.getSession();
          User ses = (User)Session.getAttribute("user");
          String s = ses.getUsername(); //获取session username %>
-<p align="right">欢迎：<%=s %></p>
+         
+  <p >
+  <font size="40">
+  <a style="text-decoration:none" align="left" href="main.jsp">主页</a>  
+  <a style="text-decoration:none" href="choice.jsp" >组队</a>  
+   <a style="text-decoration:none" href="Baidumap.jsp">导航</a>  
+   <a style="text-decoration:none" href="TeamInfo">队伍信息</a> 
+   <a style="float: right;">欢迎：<%=s %></a>
+      </font>       
+   </p>
+   
+  <%
+   }
+   else  // 非法用户，没有登陆通过，则 session 范围内没有属性存在
+   {
+  %>
+  <p >
+  <font size="40">
+  <a  style="text-decoration:none" align="left" href="main.jsp">主页</a>  
+  <a style="text-decoration:none" href="choice.jsp">组队</a>  
+   <a style="text-decoration:none" href="Baidumap.jsp">导航</a>  
+   <a style="text-decoration:none" href="TeamInfo">队伍信息</a> 
+  
+   
+  <a style="float: right;text-decoration:none"   href="register.jsp">注册 </a>
+  <a style="float: right;text-decoration:none"   href="login.jsp">登录&nbsp</a>
+      
+   </font>       
+       
+       
+       
+   </p>
+  <%
+   }
+  %>
+         
+         
+         
+         
 
 
-	<center>
-	<table width="300" height="100" id="mainTb">
-	    <tr><th rowspan="4"><div id="cnt">&nbsp;</div></td>
-	    <td width="15"><span class="ctrl">&nbsp;1&nbsp;</span></td></tr>
-	    <tr><td><span class="ctrl">&nbsp;2&nbsp;</span></td></tr>
-	    <tr><td><span class="ctrl">&nbsp;3&nbsp;</span></td></tr>
-	    <tr><td><span class="ctrl">&nbsp;4&nbsp;</span></td></tr>
-	</table>
-	<table id="table1" border="1" cellpadding="0" cellspacing="10"  style="border:none">
+
+ 
+ 
+
+
+ 
+
+
+
+
+    <center>
+    <table width="300" height="100" id="mainTb">
+        <tr><th rowspan="4"><div id="cnt">&nbsp;</div></td>
+        <td width="15"><span class="ctrl">&nbsp;1&nbsp;</span></td></tr>
+        <tr><td><span class="ctrl">&nbsp;2&nbsp;</span></td></tr>
+        <tr><td><span class="ctrl">&nbsp;3&nbsp;</span></td></tr>
+        <tr><td><span class="ctrl">&nbsp;4&nbsp;</span></td></tr>
+    </table>
+    
+    
+    
+    
+    
+    <table id="table1" border="1" cellpadding="0" cellspacing="10"  style="border:none">
 <tr>
-    <td width="230" border="1" valign="top" >
+    <td width=50% border="1" valign="top" >
     <font size="20">约!约!约!</font>
     <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a href="choice.jsp">·匹配队友</a></font>
+    <font size="5"><a style="text-decoration:none" href="choice.jsp">·匹配队友</a></font>
     </td>
     <td valign="top"> 
     <font size="20">推荐路径</font>
     <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a href="Baidumap.jsp">·待完成</a></font>
+    <font size="5"><a style="text-decoration:none" href="Baidumap.jsp">·查询路线</a></font>
     </td>
 </tr>
+
 <tr>
-    <td valign="top">
-    <font size="20">组建队伍</font>
+    <td width=50% valign="top">
+    <font size="20">队伍信息</font>
     <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a href="TeamInfo">info</a></font>
-    </td valign="top">
+    <font size="5"><a style="text-decoration:none" href="TeamInfo" >·产看队伍信息</a></font>
+    </td>
     <td valign="top">
     <font size="20">广告位招租：</font>
     <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a href="http://www.w3school.com.cn/">·秋林商场大促销</a></font>
+    <font size="5"><a style="text-decoration:none" href="http://www.w3school.com.cn/">·秋林商场大促销</a></font>
     </td>
 </tr>
-	</table>  
+    </table>  
  
 
 </center>
