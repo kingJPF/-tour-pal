@@ -126,8 +126,10 @@ body
   <a style="text-decoration:none" align="left" href="main.jsp">主页</a>  
   <a style="text-decoration:none" href="choice.jsp" >组队</a>  
    <a style="text-decoration:none" href="Baidumap.jsp">导航</a>  
-   <a style="text-decoration:none" href="TeamInfo">队伍信息</a> 
-   <a style="float: right;">欢迎：<%=s %></a>
+   <a style="text-decoration:none" href="TeamInfo">队伍信息</a>
+   <a style="float: right;" href="Logout">退出</a> 
+   <a style="float: right;">欢迎：<%=s %>&nbsp</a>
+   
       </font>       
    </p>
    

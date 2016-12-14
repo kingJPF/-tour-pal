@@ -21,7 +21,7 @@
         <div class="col-xs-12">
           <h2 class="text-center"><em>一个救了数十亿生命的人</em></h2>
          </div> 
-        <div class="thumbnail"><img src="http://ww4.sinaimg.cn/mw690/77dea487jw1f9jlsp2wt1j23c02o04qt.jpg"  </div>
+        <div class="thumbnail"> <img src="http://ww4.sinaimg.cn/mw690/77dea487jw1f9jlsp2wt1j23c02o04qt.jpg"> </div>
     
       </div>
     </div>

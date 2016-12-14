@@ -39,7 +39,7 @@ public class ChoiceAction extends ActionSupport implements ModelDriven<User>
         //System.out.println(user.getUsername()); 
         ConnectionSQL conn=new ConnectionSQL();
         if(user.getStart().equals("")||user.getEnd().equals("")) {
-        	message = "鐩殑鍦版垨鍒濆鍦颁笉鑳戒负绌猴紒";
+        	message = "出发地或目的地为空";
         	return INPUT;
         	
         }else{
