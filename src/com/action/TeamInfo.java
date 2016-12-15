@@ -59,7 +59,6 @@ public class TeamInfo extends ActionSupport implements ModelDriven<User>{
    
     		date1 = user.getStart_date();
     		date2 = date1.substring(0, 2);
-    		System.out.println(date2);
     		date1 = date1.substring(2, 4);
         	start1 = user.getStart();
         	end1 = user.getEnd();
