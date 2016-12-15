@@ -42,8 +42,15 @@ public class TeamInfo extends ActionSupport implements ModelDriven<User>{
 		this.end1 = end1;
 	}
 
-	private String date1,date2,start1,end1;
-    private HttpServletRequest request;  
+	private String date1,date2,start1,end1,message;
+    public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	private HttpServletRequest request;  
     private ArrayList<User_info> User_mate1 = new ArrayList<User_info>();
     public User getModel()  
     {  
@@ -66,10 +73,11 @@ public class TeamInfo extends ActionSupport implements ModelDriven<User>{
 
     		return SUCCESS;
     	} else {
+    		message = "Äú»¹Ã»»ï°éÅ¶";
     		return ERROR;
     	}
     	
-    }
+    } 
     
     
 }

@@ -22,9 +22,9 @@ public class ChoiceAction extends ActionSupport implements ModelDriven<User>
  {
 
 	
-    private String message;
+    private String message="";
     private HttpServletRequest request;  
-   
+    private ArrayList<User_info> User_mate1 = new ArrayList<User_info>();
     public User getModel()  
     {  
         return user;  
@@ -39,15 +39,30 @@ public class ChoiceAction extends ActionSupport implements ModelDriven<User>
         //System.out.println(user.getUsername()); 
         ConnectionSQL conn=new ConnectionSQL();
         if(user.getStart().equals("")||user.getEnd().equals("")) {
-        	message = "鐩殑鍦版垨鍒濆鍦颁笉鑳戒负绌猴紒";
+        	message = "出发地或目的地为空";
         	return INPUT;
         	
         }else{
         	conn.Insert_choice(user);
-        	return SUCCESS;
+        	if(conn.Match(user,User_mate1)) {
+            	
+            	return SUCCESS;
+            	
+            }else{
+            	message = "无队友,匹配失败。请重新输入";
+            	return INPUT;
+            }
         }
     }
 
+    public ArrayList<User_info> getUser_mate1() {
+		return User_mate1;
+	}
+
+	public void setUser_mate1(ArrayList<User_info> user_mate1) {
+		User_mate1 = user_mate1;
+	}
+    
 	public String getMessage() {
 		return message;
 	}

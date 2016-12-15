@@ -5,13 +5,41 @@
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="com.opensymphony.xwork2.*"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
 <TITLE></TITLE>
 
+<link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    
+    <script  type="text/javascript" src="WebContent/bootstrap/js/jquery-3.1.1.min.js"></script>
+    
+    <script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
+
+
+<script type="text/javascript">
+function TeamInfo()
+{
+    window.location.href = "TeamInfo";
+}
+
+</script>
+<script type="text/javascript">
+function Logout()
+{
+    
+    window.location.href = "Logout";
+}
+
+</script>
 
 </HEAD>
 
@@ -80,7 +108,7 @@
         // 创建4个图片对象保存图片路径
         for(var i=0;i<4;i++){
             imgArr[i] = new Image();
-            imgArr[i].src = "pic/" + (i + 1) + ".jpg";
+            imgArr[i].src = "pic/" + (i + 1) + ".jpeg";
         }
         var controlArr = $("mainTb").getElementsByTagName("span");
         for(var i=0;i<controlArr.length;i++){
@@ -103,62 +131,132 @@
 
 
 <style>
-body 
-{
-    background-image:url(pic/6.jpg);
-    background-color:#b0c4de;
+
+.blue-color{
+background:#F0FFFF;
 }
+.red-color{
+color:red;
+}
+.text-color{
+font-color:#F0FFFF;}
+ body{ 
+ background-image:url(pic/6.jpg);
+ font-family:"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+ }
+.thick-green-border 
+   {
+    border-color: #87CEFA;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+  p{
+  font-size: 30px;
+  }
+  .downcolor
+  {
+  background:#F0FFFF;
+  }
+
 </style>
 
 
-<BODY >
+<body>
 
 
+       
+ 
+        
          <%
    if(session.getAttribute("user") != null) // 已经设置过的属性，所有不为空
    {
-  %> <%HttpSession Session = request.getSession();
+	    HttpSession Session = request.getSession();
          User ses = (User)Session.getAttribute("user");
-         String s = ses.getUsername(); //获取session username %>
+         String s = ses.getUsername(); //获取session username 
          
-  <p >
-  <font size="40">
-  <a style="text-decoration:none" align="left" href="main.jsp">主页</a>  
+         %>
+         <div class="container">
+        <div class ="jumbotron blue-color">
+   <div class="row"> 
+   <div class="col-xs-2">
+           
+            
+    <img class="img-responsive thick-green-border" src="pic/7.jpeg">
+    </div>
+     <div class="col-xs-5 text-primary">
+                <h1 class="text-left">驴友网</h1> 
+                </div>    
+  <div class="col-xs-5 text-primary text-right">
+  <h2 class="text-danger ">
+  
+  <a style=" text-decoration:none" align="left" href="main.jsp">主页</a>  
+   
   <a style="text-decoration:none" href="choice.jsp" >组队</a>  
    <a style="text-decoration:none" href="Baidumap.jsp">导航</a>  
    <a style="text-decoration:none" href="TeamInfo">队伍信息</a> 
-   <a style="float: right;">欢迎：<%=s %></a>
-      </font>       
-   </p>
+   </h2>
+   </div>
+  
    
+   <div class="col-xs-12 text-primary text-right">
+   <h4 class="text-primary">Hi!   <%=s %></h4>
+     </div>
+     <div class="col-xs-12 text-primary text-right">
+     
+   <button  class="btn btn-danger"onclick="Logout()">退出</button>
+   
+   </div>
+    
+   </div>
+   </div>
+   </div>
   <%
    }
    else  // 非法用户，没有登陆通过，则 session 范围内没有属性存在
    {
   %>
-  <p >
-  <font size="40">
+  <div class="container">
+        <div class ="jumbotron blue-color">
+    <div class="row"> 
+   <div class="col-xs-2">
+           
+            
+    <img class="img-responsive thick-green-border" src="pic/7.jpeg">
+    </div>
+     <div class="col-xs-5 text-primary">
+                <h1 class="text-left">驴友网</h1> 
+                </div>    
+  <div class="col-xs-5 text-primary text-right">
+  <h2>
+  
   <a  style="text-decoration:none" align="left" href="main.jsp">主页</a>  
   <a style="text-decoration:none" href="choice.jsp">组队</a>  
    <a style="text-decoration:none" href="Baidumap.jsp">导航</a>  
    <a style="text-decoration:none" href="TeamInfo">队伍信息</a> 
   
-   
-  <a style="float: right;text-decoration:none"   href="register.jsp">注册 </a>
-  <a style="float: right;text-decoration:none"   href="login.jsp">登录&nbsp</a>
+   <div class="col-xs-10 text-primary text-right">
+   </h2>
+   <div class="col-xs-12 text-primary text-right">
+  <button  class="btn btn-primary"onclick="{location.href='login.jsp'}">登陆</button>
+  </div>
+  <div class="col-xs-12 text-primary text-right">
+  <button  class="btn btn-danger"onclick="{location.href='register.jsp'}">注册</button>
+  </div>
       
-   </font>       
+         
        
        
        
-   </p>
+   </div>
+    </div>
+  </div>
+  </div>  
   <%
    }
   %>
          
-         
-         
-         
+
 
 
 
@@ -169,50 +267,39 @@ body
  
 
 
-
+  <div class="container">
+        <div class ="jumbotron blue-color">
+    <div class="row"> 
 
     <center>
-    <table width="300" height="100" id="mainTb">
-        <tr><th rowspan="4"><div id="cnt">&nbsp;</div></td>
-        <td width="15"><span class="ctrl">&nbsp;1&nbsp;</span></td></tr>
-        <tr><td><span class="ctrl">&nbsp;2&nbsp;</span></td></tr>
-        <tr><td><span class="ctrl">&nbsp;3&nbsp;</span></td></tr>
-        <tr><td><span class="ctrl">&nbsp;4&nbsp;</span></td></tr>
-    </table>
+   <img src="pic/8.jpeg" class="img-responsive">
     
     
     
     
     
-    <table id="table1" border="1" cellpadding="0" cellspacing="10"  style="border:none">
-<tr>
-    <td width=50% border="1" valign="top" >
-    <font size="20">约!约!约!</font>
-    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a style="text-decoration:none" href="choice.jsp">·匹配队友</a></font>
-    </td>
-    <td valign="top"> 
-    <font size="20">推荐路径</font>
-    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a style="text-decoration:none" href="Baidumap.jsp">·查询路线</a></font>
-    </td>
-</tr>
 
-<tr>
-    <td width=50% valign="top">
-    <font size="20">队伍信息</font>
-    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a style="text-decoration:none" href="TeamInfo" >·产看队伍信息</a></font>
-    </td>
-    <td valign="top">
-    <font size="20">广告位招租：</font>
-    <HR style="border:3 dashed #ff0033" width="100%" SIZE=1 >
-    <font size="5"><a style="text-decoration:none" href="http://www.w3school.com.cn/">·秋林商场大促销</a></font>
-    </td>
-</tr>
-    </table>  
+<div class="col-xs-4 text-right">
+        <div>
+        <button  class="btn  btn-primary"onclick="{location.href='choice.jsp'}">匹配队友</button>
+        </div>
+           </div>
+       
+        
+           <div class="col-xs-4 text-center"> 
+          <button  class="btn   btn-primary"onclick="{location.href='Baidumap.jsp'}">路线查询</button>
+          </div>
  
-
+<div class="col-xs-4 text-left">
+        <button  class="btn  btn-primary"onclick="TeamInfo()">队伍信息</button>
+           </div>
+       
+        
+           
 </center>
-</BODY>
+</div>
+</div>
+</div>
+
+</body>
 </HTML>

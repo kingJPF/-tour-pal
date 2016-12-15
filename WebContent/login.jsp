@@ -9,9 +9,16 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+<script  type="text/javascript" src="WebContent/bootstrap/js/jquery-3.1.1.min.js"></script>
 </script>
 <script type="text/javascript">
 </script> 
+<script>
+  $(document).ready(function() {
+    $("button").addClass("animated bounce");
+    $(".well").addClass("animated shake");
+  });
+</script>
 
 </head>  
 <style>
@@ -39,19 +46,24 @@ font-color:#F0FFFF;}
 </style>
 
     <body > 
+
    
     
     
      <div class="container">
         <div class ="jumbotron blue-color">
-            <div class="row">
-                <div class="col-xs-10">
-                <h1 class="text-right blue-color ">用户登录</h1> 
-                </div>
-                <div class="col-xs-2">
+        <div class="row">
+            <div class="col-xs-2">
+           
+            
     <img class="img-responsive thick-green-border" src="pic/7.jpeg">
     </div>
-    
+     <div class="col-xs-5 text-primary">
+                <h1 class="text-left">驴友网</h1> 
+                </div>
+                <div class="col-xs-5 text-primary">
+                <h1 class="text-right">用户登陆</h1> 
+                </div>
       
           
         </div>
@@ -66,27 +78,32 @@ font-color:#F0FFFF;}
         
 
         <form class=text-center action="login" method ="post">
-       <div class="col-xs-12 ">
-         <input name="username" type="text " placeholder="用户名" required>
+       <div class="col-xs-12 text-center">
+         <input name="username" type="text" placeholder="用户名" required>
          </div>
-         <div class="col-xs-12 ">
+         <div class="col-xs-12 text-center"><h1> </h1></div>
+         <div class="col-xs-12 text-center">
          <input name="password" placeholder ="密码" type="password" required>
          </div>
-         <div class="col-xs-12">
+         <div class="col-xs-12 text-center text-danger">
         <s:property value = "message"/>
           </div>
-         
-        <button type="submit" class="btn  btn-primary"><i class="fa fa-paper-plane"></i> 登陆</button> 
-        
-           <div class="col-xs-12">
- 
-          <h4 class="text-center text-primary ">未注册，单击此处<a class="red-color "href="register.jsp">注册</a>  </h4>
           
+          
+       
+          <div class="col-xs-6 text-right">
+        <button type="submit" class="btn btn-primary "> 登陆</button>
+           </div>
+       
+        </form>
+           <div class="col-xs-6 text-left"> 
+          <button  class="btn btn-danger"onclick="{location.href='register.jsp'}">注册</button>
           </div>
-    </form>
+        
+   </div>
     </div>
     </div>
-    </div>
+    
       
     
 </body>  

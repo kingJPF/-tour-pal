@@ -4,19 +4,24 @@
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@ page language="java" import="java.sql.*,java.io.*,java.util.*"%> 
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@include  file="sessionCheck.jsp"%>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>指定起点与终点的驾车导航</title>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2">
+<title>路线导航</title>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3">
 
 </script>
-<%HttpSession Session = request.getSession();
+
+
+<%/*HttpSession Session = request.getSession();
          User ses = (User)Session.getAttribute("user");
         
          String name = ses.getUsername(); 
-         %>
- <%        PreparedStatement ps=null; 
+        PreparedStatement ps=null; 
          Connection conn=null;
         //驱动程序名   
         String driverName = "com.mysql.jdbc.Driver";  
@@ -42,7 +47,7 @@
             	 start = rs.getString("start");
             	 end = rs.getString("end");
             	}
-        	
+        */	
     %>
 <style>
 body{font-size:14px;}
@@ -64,19 +69,24 @@ a:hover{color:#99AA66;}
 #drivingPanel{border:1px solid #6688EE;}
 
 </style>
+
 </head>
 <body>
 <div>
+<from>
      <div class="searchbox">
-    <%= name %>
-        从<input class="txt" type="text" id="startInput" value= <%=start%>>
+    
+        从<input class="txt" type="text" id="startInput" name = "startInput"/>
     到
-    <input class="txt" type="text" id="endInput"  value = <%=end%> name="text" />
+    <input class="txt" type="text" id="endInput" name = "endInput" />
     &nbsp; 
-    <input type="button" id="button" value="查询路径" onclick="mDriving()" />
+    <input type="submit" id="button" value="查询路径" onclick="mDriving()" />
         公里数：<input class="txt" type="text" id="gls">
-        <a href="main.jsp">·返回主页</a>
+        
+        <input type="submit" id="button" value="查询该路线上的用户" onclick="Search()" />
+        <a style=" text-decoration:none" align="left" href="main.jsp">返回主页</a>
     </div>
+ </from>
 </div>
 <div class="clear"></div>
 <div class="mainbox">
@@ -90,9 +100,28 @@ a:hover{color:#99AA66;}
         <div id="drivingPanel"></div>-->
     </div>
 </div>
+<s:property value = "a"/>
+		
+			<s:iterator value="User_mate1" id="String" status = "status" >
+			<s:property value = "username"/>
+			<s:property value = "usersex"/>
+			<s:property value = "userage"/>
+			<s:property value = "usermonth"/>月
+			<s:property value = "userday"/>日
+			<a href="Team?leadname=<s:property value="username"/>">匹配该队友</a> </br>
+</s:iterator>
 </body>
+ 
 </html>
 <script type="text/javascript">
+
+function Search()
+{
+	var startInput=document.getElementById('startInput').value;
+	var endInput=document.getElementById('endInput').value;
+	window.location.href = "SearchInMap?startInput=" + startInput + "&endInput=" + endInput;
+}
+
 var map = new BMap.Map("container");            // 创建Map实例
 var point = new BMap.Point(121.50, 31.30);    // 创建点坐标
 map.centerAndZoom(point,11);                     // 初始化地图,设置中心点坐标和地图级别。
@@ -104,6 +133,8 @@ var endInfowin = new BMap.InfoWindow("<p class='t-c'><input value='选为终点'
 var startResults = null;
 var endResults = null;
  
+
+
 var startPoint,starttitle;
 var endPoint,endtitle;
 var startOption = {
